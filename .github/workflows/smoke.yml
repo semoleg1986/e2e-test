@@ -1,0 +1,54 @@
+name: e2e-smoke
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+  schedule:
+    - cron: "0 3 * * *"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install Playwright browser
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Prepare env
+        run: |
+          cat > .env <<ENV
+          E2E_USER_WEB_URL=${{ vars.E2E_USER_WEB_URL }}
+          E2E_ADMIN_WEB_URL=${{ vars.E2E_ADMIN_WEB_URL }}
+          E2E_AUTH_URL=${{ vars.E2E_AUTH_URL }}
+          E2E_USER_CHILDREN_URL=${{ vars.E2E_USER_CHILDREN_URL }}
+          E2E_ADMIN_IDENTIFIER=${{ secrets.E2E_ADMIN_IDENTIFIER }}
+          E2E_ADMIN_PASSWORD=${{ secrets.E2E_ADMIN_PASSWORD }}
+          ENV
+
+      - name: Validate env
+        run: |
+          test -n "${{ vars.E2E_USER_WEB_URL }}"
+          test -n "${{ vars.E2E_ADMIN_WEB_URL }}"
+          test -n "${{ vars.E2E_AUTH_URL }}"
+          test -n "${{ vars.E2E_USER_CHILDREN_URL }}"
+          test -n "${{ secrets.E2E_ADMIN_IDENTIFIER }}"
+          test -n "${{ secrets.E2E_ADMIN_PASSWORD }}"
+
+      - name: Run smoke
+        run: pnpm e2e:smoke

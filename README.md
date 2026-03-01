@@ -32,6 +32,19 @@ pnpm e2e:smoke
 pnpm e2e:debug
 ```
 
+## CI (schedule/release)
+Workflow: `/Users/olegsemenov/Programming/monitoring/e2e/.github/workflows/smoke.yml`
+
+Required GitHub variables:
+- `E2E_USER_WEB_URL`
+- `E2E_ADMIN_WEB_URL`
+- `E2E_AUTH_URL`
+- `E2E_USER_CHILDREN_URL`
+
+Required GitHub secrets:
+- `E2E_ADMIN_IDENTIFIER`
+- `E2E_ADMIN_PASSWORD`
+
 ## Smoke покрытие
 - `user-flow`: register -> profile -> child
 - `admin-flow`: admin login -> users -> user children
