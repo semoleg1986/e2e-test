@@ -6,6 +6,8 @@ Playwright e2e для рабочего контура:
 - `auth-service`
 - `user-children-service`
 
+Operational runbook: `/Users/olegsemenov/Programming/monitoring/e2e/RUNBOOK.md`
+
 ## Конфиг env
 Используется автозагрузка из:
 1. `/Users/olegsemenov/Programming/monitoring/e2e/.env`
