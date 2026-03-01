@@ -2,10 +2,6 @@ name: e2e-smoke
 
 on:
   workflow_dispatch:
-  release:
-    types: [published]
-  schedule:
-    - cron: "0 3 * * *"
 
 jobs:
   smoke:
