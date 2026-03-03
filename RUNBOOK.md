@@ -3,29 +3,55 @@
 ## Baseline
 - Release baseline tag: `v0.1.0`
 - Working repos: `auth-service`, `user-children-service`, `user-web`, `admin-web`, `e2e`
+- Latest validated smoke result: `5 passed`
 
-## Start order
-1. `auth-service` (port `8000`)
-2. `user-children-service` (port `8001`)
-3. `user-web` (port `3000`)
-4. `admin-web` (port `3001`)
+## Public Stand
+- `auth-service`: `http://89.168.77.132:8000`
+- `user-children-service`: `http://89.168.77.132:8001`
+- `user-web`: `http://89.168.77.132:3000`
+- `admin-web`: `http://89.168.77.132:3001`
 
-## Local start commands
+## Runtime Order
+1. `auth-service`
+2. `user-children-service`
+3. `user-web`
+4. `admin-web`
+
+## Server Deploy (Image Mode)
 ```bash
-# terminal 1
-cd /Users/olegsemenov/Programming/monitoring/auth-service && make run
+# auth-service
+cd /opt/monitoring/deploy/auth-service && docker-compose pull && docker-compose up -d
 
-# terminal 2
-cd /Users/olegsemenov/Programming/monitoring/user-children-service && make run
+# user-children-service
+cd /opt/monitoring/deploy/user-children-service && docker-compose pull && docker-compose up -d
 
-# terminal 3
-cd /Users/olegsemenov/Programming/monitoring/user-web && pnpm dev --port 3000
+# user-web
+cd /opt/monitoring/deploy/user-web && docker-compose pull && docker-compose up -d
 
-# terminal 4
-cd /Users/olegsemenov/Programming/monitoring/admin-web && pnpm dev --port 3001
+# admin-web
+cd /opt/monitoring/deploy/admin-web && docker-compose pull && docker-compose up -d
 ```
 
-## Smoke check
+## Health Check
+```bash
+curl -i http://89.168.77.132:8000/healthz
+curl -i http://89.168.77.132:8001/healthz
+curl -I http://89.168.77.132:3000
+curl -I http://89.168.77.132:3001
+```
+
+## CI Variables (Repo `e2e-test`)
+Variables:
+- `E2E_USER_WEB_URL=http://89.168.77.132:3000`
+- `E2E_ADMIN_WEB_URL=http://89.168.77.132:3001`
+- `E2E_AUTH_URL=http://89.168.77.132:8000`
+- `E2E_USER_CHILDREN_URL=http://89.168.77.132:8001`
+
+Secrets:
+- `E2E_ADMIN_IDENTIFIER`
+- `E2E_ADMIN_PASSWORD`
+
+## Smoke Check
 ```bash
 cd /Users/olegsemenov/Programming/monitoring/e2e
 pnpm e2e:smoke
@@ -33,7 +59,7 @@ pnpm e2e:smoke
 
 Expected result: `5 passed`.
 
-## HTML report
+## HTML Report
 ```bash
 cd /Users/olegsemenov/Programming/monitoring/e2e
 pnpm exec playwright show-report
