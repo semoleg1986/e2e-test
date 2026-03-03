@@ -50,10 +50,10 @@ export function getConfig(): E2EConfig {
   loadDotenvIfNeeded()
 
   return {
-    userWebBaseUrl: process.env.E2E_USER_WEB_URL || 'http://localhost:3000',
-    adminWebBaseUrl: process.env.E2E_ADMIN_WEB_URL || 'http://localhost:3001',
-    authBaseUrl: process.env.E2E_AUTH_URL || 'http://127.0.0.1:8000',
-    userChildrenBaseUrl: process.env.E2E_USER_CHILDREN_URL || 'http://127.0.0.1:8001',
+    userWebBaseUrl: process.env.E2E_USER_WEB_URL || 'http://89.168.77.132:3000',
+    adminWebBaseUrl: process.env.E2E_ADMIN_WEB_URL || 'http://89.168.77.132:3001',
+    authBaseUrl: process.env.E2E_AUTH_URL || 'http://89.168.77.132:8000',
+    userChildrenBaseUrl: process.env.E2E_USER_CHILDREN_URL || 'http://89.168.77.132:8001',
     adminIdentifier: process.env.E2E_ADMIN_IDENTIFIER || 'admin_e2e@example.com',
     adminPassword: process.env.E2E_ADMIN_PASSWORD || 'Password123!'
   }
