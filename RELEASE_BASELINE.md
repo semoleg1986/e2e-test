@@ -11,7 +11,7 @@
 | `user-children-service` | `main` | `v0.1.2` | `ea56dddbbabb` |
 | `user-web` | `main` | `v0.1.2` | `bd0886daa4b4` |
 | `admin-web` | `main` | `v0.1.2` | `2cae2bfe3abe` |
-| `e2e` | `main` | `v0.1.2` | `2419d2ae02b6` |
+| `e2e` | `main` | `v0.1.2` | `233b03fc860e` |
 
 ## Что подтверждено
 
