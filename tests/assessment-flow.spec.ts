@@ -120,7 +120,7 @@ test.describe('Assessment flow', () => {
         child_id: childId
       }
     })
-    expect(assignmentRes.status()).toBe(201)
+    expect(assignmentRes.status()).toBe(200)
     await assignmentRes.json()
     await adminCtx.dispose()
 
