@@ -1,7 +1,7 @@
 # RUNBOOK
 
 ## Baseline
-- Release baseline tag: `v0.1.0`
+- Release baseline tag: `v0.1.2`
 - Working repos: `auth-service`, `user-children-service`, `user-web`, `admin-web`, `e2e`
 - Latest validated smoke result: `5 passed`
 
