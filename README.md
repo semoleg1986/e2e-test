@@ -42,6 +42,7 @@ Required GitHub variables:
 - `E2E_ADMIN_WEB_URL`
 - `E2E_AUTH_URL`
 - `E2E_USER_CHILDREN_URL`
+- `E2E_ASSESSMENT_URL`
 
 Required GitHub secrets:
 - `E2E_ADMIN_IDENTIFIER`
@@ -53,9 +54,10 @@ Required GitHub secrets:
 - `access-control`: user не имеет admin доступа
 - `token-lifecycle`: login -> refresh -> logout -> refresh denied
 - `audit-flow`: действия пользователя видны в аудите
+- `assessment-flow`: assign -> start -> submit -> result
 
 ## Текущий результат
-Ожидаемый baseline: `5/5 passed`.
+Ожидаемый baseline: `6/6 passed`.
 
 Отчет:
 ```bash

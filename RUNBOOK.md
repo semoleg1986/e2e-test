@@ -3,7 +3,7 @@
 ## Baseline
 - Release baseline tag: `v0.1.2`
 - Working repos: `auth-service`, `user-children-service`, `user-web`, `admin-web`, `e2e`
-- Latest validated smoke result: `5 passed`
+- Latest validated smoke result: `6 passed`
 
 ## Public Stand
 - `auth-service`: `http://89.168.77.132:8000`
@@ -46,6 +46,7 @@ Variables:
 - `E2E_ADMIN_WEB_URL=http://89.168.77.132:3001`
 - `E2E_AUTH_URL=http://89.168.77.132:8000`
 - `E2E_USER_CHILDREN_URL=http://89.168.77.132:8001`
+- `E2E_ASSESSMENT_URL=http://89.168.77.132:8003`
 
 Secrets:
 - `E2E_ADMIN_IDENTIFIER`
@@ -57,7 +58,7 @@ cd /Users/olegsemenov/Programming/monitoring/e2e
 pnpm e2e:smoke
 ```
 
-Expected result: `5 passed`.
+Expected result: `6 passed`.
 
 ## HTML Report
 ```bash

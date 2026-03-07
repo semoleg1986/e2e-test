@@ -7,6 +7,7 @@ export type E2EConfig = {
   adminWebBaseUrl: string
   authBaseUrl: string
   userChildrenBaseUrl: string
+  assessmentBaseUrl: string
   adminIdentifier: string
   adminPassword: string
 }
@@ -54,6 +55,7 @@ export function getConfig(): E2EConfig {
     adminWebBaseUrl: process.env.E2E_ADMIN_WEB_URL || 'http://89.168.77.132:3001',
     authBaseUrl: process.env.E2E_AUTH_URL || 'http://89.168.77.132:8000',
     userChildrenBaseUrl: process.env.E2E_USER_CHILDREN_URL || 'http://89.168.77.132:8001',
+    assessmentBaseUrl: process.env.E2E_ASSESSMENT_URL || 'http://89.168.77.132:8003',
     adminIdentifier: process.env.E2E_ADMIN_IDENTIFIER || 'admin_e2e@example.com',
     adminPassword: process.env.E2E_ADMIN_PASSWORD || 'Password123!'
   }
